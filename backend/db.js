@@ -32,9 +32,22 @@ const userScheme= new mongoose.Scheme({
         maxLength:50
     }
 });
-
+const accountScheme= new mongoose.Scheme({
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required:true
+    },
+    balance:{
+        type:Number,
+        required:true,
+        
+    }
+});
+const Account= mongoose.model('Account',accountScheme);
 const User= mongoose.model("user",userScheme);
 
 module.exports = {
-    User
+    User,
+    Account
 }
